@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: public
+  DEPLOYMENT_FOLDER: ./
 
 jobs:
 # Please do not rename this job
@@ -34,7 +34,9 @@ jobs:
 
       - name: Build Node assets
         env:
+          API_KEY: 6ab17453-c041-48a6-9ec9-ac6e04a5b1a1
           CI: true
+          NEXT_PUBLIC_APP_ID: 907d25b7-b52e-4090-85d0-44e0221b15e4
           SITE_URL: ${{ inputs.site-url }}
         run: |
           npm install --global yarn
@@ -47,7 +49,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: af901d30-3de2-4db5-aa22-7c7b5a914296
+          project-id: 3e6ca4a8-7599-4040-93c7-d844662b95f6
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
